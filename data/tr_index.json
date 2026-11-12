@@ -1,0 +1,98 @@
+[
+ {
+  "id": "ru.kuliev",
+  "name": "Кулиев",
+  "lang": "ru",
+  "dir": "ltr",
+  "file": "data/tr/ru-kuliev.js",
+  "kb": 1397
+ },
+ {
+  "id": "ru.porokhova",
+  "name": "Порохова",
+  "lang": "ru",
+  "dir": "ltr",
+  "file": "data/tr/ru-porokhova.js",
+  "kb": 1491
+ },
+ {
+  "id": "ru.osmanov",
+  "name": "Османов",
+  "lang": "ru",
+  "dir": "ltr",
+  "file": "data/tr/ru-osmanov.js",
+  "kb": 1452
+ },
+ {
+  "id": "en.sahih",
+  "name": "Saheeh International",
+  "lang": "en",
+  "dir": "ltr",
+  "file": "data/tr/en-sahih.js",
+  "kb": 857
+ },
+ {
+  "id": "fr.hamidullah",
+  "name": "Hamidullah",
+  "lang": "fr",
+  "dir": "ltr",
+  "file": "data/tr/fr-hamidullah.js",
+  "kb": 903
+ },
+ {
+  "id": "de.bubenheim",
+  "name": "Bubenheim & Elyas",
+  "lang": "de",
+  "dir": "ltr",
+  "file": "data/tr/de-bubenheim.js",
+  "kb": 939
+ },
+ {
+  "id": "es.cortes",
+  "name": "Cortés",
+  "lang": "es",
+  "dir": "ltr",
+  "file": "data/tr/es-cortes.js",
+  "kb": 762
+ },
+ {
+  "id": "tr.diyanet",
+  "name": "Diyanet",
+  "lang": "tr",
+  "dir": "ltr",
+  "file": "data/tr/tr-diyanet.js",
+  "kb": 971
+ },
+ {
+  "id": "id.indonesian",
+  "name": "Bahasa Indonesia",
+  "lang": "id",
+  "dir": "ltr",
+  "file": "data/tr/id-indonesian.js",
+  "kb": 1112
+ },
+ {
+  "id": "ur.jalandhry",
+  "name": "جالندہری",
+  "lang": "ur",
+  "dir": "rtl",
+  "file": "data/tr/ur-jalandhry.js",
+  "kb": 1393
+ },
+ {
+  "id": "zh.jian",
+  "name": "马坚",
+  "lang": "zh",
+  "dir": "ltr",
+  "file": "data/tr/zh-jian.js",
+  "kb": 724
+ },
+ {
+  "id": "fa.makarem",
+  "name": "مکارم شیرازی",
+  "lang": "fa",
+  "dir": "rtl",
+  "file": "data/tr/fa-makarem.js",
+  "kb": 1451
+ }
+]

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#04120F">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>القرآن الكريم — نور</title>
+<meta name="description" content="القرآن الكريم كاملاً بخط عثماني، مع ترجمة روسية وإنجليزية وأكثر، يعمل بدون إنترنت.">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/i192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<style>@font-face{font-family:'AmiriQ';src:url('fonts/amiri.ttf') format('truetype');font-display:swap;font-weight:400 700}</style>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-theme="emerald">
+
+<div id="splash" class="splash">
+  <div class="splash-in">
+    <div class="splash-mark">﷽</div>
+    <h1>القرآن الكريم</h1>
+    <p class="splash-sub">نور</p>
+    <div class="loadbar"><span id="loadFill"></span></div>
+    <p class="splash-tiny" id="loadTxt">جارٍ التحضير…</p>
+  </div>
+</div>
+
+<header class="appbar" id="appbar">
+  <button class="ibtn" id="backBtn" aria-label="back" hidden></button>
+  <div class="bar-title">
+    <b id="barTitle">القرآن الكريم</b>
+    <span id="barSub">نور</span>
+  </div>
+  <div class="bar-actions">
+    <button class="ibtn" id="trBtn" aria-label="translation" hidden></button>
+    <button class="ibtn" id="searchBtn" aria-label="search"></button>
+    <button class="ibtn" id="themeBtn" aria-label="theme"></button>
+  </div>
+</header>
+
+<main id="app" class="app"></main>
+
+<nav class="tabbar" id="tabbar">
+  <a class="tab" href="#/home" data-tab="home"><span class="ti"></span><i>الرئيسية</i></a>
+  <a class="tab" href="#/read" data-tab="read"><span class="ti"></span><i>المصحف</i></a>
+  <a class="tab" href="#/search" data-tab="search"><span class="ti"></span><i>بحث</i></a>
+  <a class="tab" href="#/saved" data-tab="saved"><span class="ti"></span><i>محفوظات</i></a>
+  <a class="tab" href="#/settings" data-tab="settings"><span class="ti"></span><i>إعدادات</i></a>
+</nav>
+
+<div class="sheet-bg" id="sheetBg"></div>
+<div class="sheet" id="sheet">
+  <div class="sheet-in">
+    <div class="sheet-head"><b id="sheetT"></b><span id="sheetSub"></span></div>
+    <div id="sheetBody"></div>
+    <button class="sheet-cancel" id="sheetCancel">إغلاق</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="js/i18n.js"></script>
+<script src="data/quran.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
