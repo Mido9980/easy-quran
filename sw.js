@@ -1,7 +1,7 @@
 /* EASY QURAN — نور — Service Worker (offline first) */
-const VERSION = 'noor-v1.0.0';
+const VERSION = 'noor-v1.0.1';
 const CORE = [
-  './', './index.html', './css/style.css', './js/app.js', './js/i18n.js',
+  './', './index.html', './css/style.css?v=1.0.1', './js/app.js?v=1.0.1', './js/i18n.js?v=1.0.1',
   './data/quran.js', './data/tr/ru-kuliev.js',
   './fonts/amiri.ttf', './manifest.json',
   './icons/i192.png', './icons/i512.png', './icons/apple-touch-icon.png', './icons/maskable512.png'
