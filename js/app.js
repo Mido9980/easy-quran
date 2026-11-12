@@ -40,6 +40,22 @@ function num(n) {
   return s.replace(/[0-9]/g, (d) => AR_DIGITS[+d]);
 }
 const p2 = (n) => String(n).padStart(3, '0');
+function ayahsWord(n) {
+  const L = S.lang;
+  if (L === 'ru') { const a = n % 10, b = n % 100;
+    if (a === 1 && b !== 11) return 'аят';
+    if (a >= 2 && a <= 4 && !(b >= 12 && b <= 14)) return 'аята';
+    return 'аятов'; }
+  if (L === 'en') return n === 1 ? 'verse' : 'verses';
+  if (L === 'fr') return n === 1 ? 'verset' : 'versets';
+  if (L === 'de') return n === 1 ? 'Vers' : 'Verse';
+  if (L === 'es') return n === 1 ? 'aleya' : 'aleyas';
+  if (L === 'tr') return 'ayet';
+  if (L === 'id') return 'ayat';
+  if (L === 'ur') return 'آیات';
+  return t('ayahs');
+}
+const aw = (n) => num(n) + ' ' + ayahsWord(n);
 
 /* ---------------- أيقونات ---------------- */
 const I = {
@@ -186,7 +202,7 @@ function viewHome() {
   }
 
   const quick = [
-    { ic: I.book, tt: t('juz'), sub: '30', go: '#/juz' },
+    { ic: I.book, tt: t('juz'), sub: num(30), go: '#/juz' },
     { ic: I.mark, tt: t('saved'), sub: num(S.bm.length), go: '#/saved' },
     { ic: I.trans, tt: t('trans_lang'), sub: trMeta(S.tr) ? trMeta(S.tr).short : t('no_translation'), go: '#/settings' }
   ];
@@ -209,7 +225,7 @@ function viewHome() {
 function surahRow(su) {
   return `<a class="srow" href="#/surah/${su.n}">
     <span class="num">${num(su.n)}</span>
-    <div class="txt"><b>${esc(su.name)}</b><small>${esc(su.en)} · ${num(su.count)} ${esc(t('ayahs'))}</small></div>
+    <div class="txt"><b>${esc(su.name)}</b><small>${esc(su.en)} · ${esc(aw(su.count))}</small></div>
     <div class="side"><span class="chip ${su.type === 'K' ? 'mk' : ''}">${su.type === 'K' ? esc(t('meccan')) : esc(t('medinan'))}</span></div>
     <span class="chev">${I.chev}</span>
   </a>`;
@@ -253,16 +269,16 @@ function viewSurah(n, focusAyah) {
   const su = SURAHS[n - 1];
   if (!su) return go('/index');
   S.view = 'surah';
-  setBar(su.name, `${su.type === 'K' ? t('meccan') : t('medinan')} · ${num(su.count)} ${t('ayahs')}`, { back: true, tr: true });
+  setBar(su.name, `${su.type === 'K' ? t('meccan') : t('medinan')} · ${aw(su.count)}`, { back: true, tr: true });
   $('#trBtn').classList.toggle('on', !!(S.tr && S.showTr));
 
   const m = trMeta(S.tr);
-  let h = `<div class="read-top"><div class="rt-t">${esc(t('surah'))} <b>${esc(su.name)}</b> · ${num(su.count)} ${esc(t('ayahs'))}${m ? ' · ' + esc(t('added_by')) + ': ' + esc(m.short) : ''}
+  let h = `<div class="read-top"><div class="rt-t">${esc(t('surah'))} <b><bdi>${esc(su.name)}</bdi></b> · ${esc(aw(su.count))}${m ? ' · ' + esc(t('added_by')) + ': <bdi>' + esc(m.short) + '</bdi>' : ''}
       <div class="progress"><i id="prog"></i></div></div>
       <button class="ibtn" id="topList" aria-label="list">${I.book}</button></div>`;
 
   h += `<div class="surah-head"><div class="sh-name">${esc(su.name)}</div>
-    <div class="sh-meta">${esc(su.en)} · ${esc(su.enT)} · ${num(su.count)} ${esc(t('ayahs'))}</div>
+    <div class="sh-meta">${esc(su.en)}${su.enT && su.enT !== su.en ? ' · ' + esc(su.enT) : ''} · ${esc(aw(su.count))}</div>
     ${su.n !== 9 && su.n !== 1 ? `<div class="sh-bis">${esc(t('bismillah'))}</div>` : ''}</div>`;
 
   h += `<div class="ayat" id="ayat">`;
@@ -294,7 +310,7 @@ function viewJuz(n) {
   const endS = end ? end.surah : 114, endA = end ? end.ayah : SURAHS[113].count;
 
   let h = `<div class="surah-head"><div class="sh-name">${esc(t('juz_word'))} ${num(jn)}</div>
-    <div class="sh-meta">${esc(SURAHS[startS - 1].name)} ${num(startA)} → ${esc(SURAHS[endS - 1].name)} ${num(endS === 114 && !end ? SURAHS[113].count : endA)}</div></div>`;
+    <div class="sh-meta"><bdi>${esc(SURAHS[startS - 1].name)}</bdi> ${num(startA)} → <bdi>${esc(SURAHS[endS - 1].name)}</bdi> ${num(end ? endA - 1 : SURAHS[113].count)}</div></div>`;
   h += `<div class="ayat" id="ayat">`;
   for (let s = startS; s <= endS; s++) {
     const su = SURAHS[s - 1];
@@ -461,7 +477,7 @@ function viewSettings() {
     h += `<option value="${x.id}" ${S.tr === x.id ? 'selected' : ''}>${esc(x.name)}</option>`;
   });
   h += `</select>
-    <p class="tiny" style="margin-top:10px">${m ? esc(m.name) : esc(t('no_translation'))} · ${esc(t('loading_tr'))}</p></div>`;
+    <p class="tiny" style="margin-top:10px">${m ? esc(m.name) : esc(t('no_translation'))}</p></div>`;
 
   h += `<div class="card"><h3>${I.globe} ${esc(t('ui_lang'))}</h3><div class="chips" id="langChips">`;
   langs.forEach((lg) => {
@@ -694,6 +710,7 @@ async function ensureTranslation() {
 
 /* ---------------- الرسم العام ---------------- */
 function render() {
+  $('#sheetCancel').textContent = t('close');
   const r = parseHash();
   if (render._h !== location.hash) { window.scrollTo(0, 0); render._h = location.hash; }
 
@@ -750,6 +767,7 @@ async function boot() {
   $('#themeBtn').innerHTML = I.moon;
   $('#backBtn').innerHTML = dir() === 'rtl' ? I.chev : I.chevL;
   $('#trBtn').innerHTML = I.trans;
+  $('#sheetCancel').textContent = t('close');
 
   txt.textContent = t('loading_tr');
   fill.style.width = '60%';
