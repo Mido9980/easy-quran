@@ -1,9 +1,19 @@
-/* ================= EASY QURAN — نور =================
+/* ================= EASY QURAN — القرآن الكريم =================
    تطبيق قرآن أوف لاين: نص عثماني + ١٢ ترجمة + بحث + محفوظات */
 (function () {
 'use strict';
 
 const Q = window.QURAN;
+if (!Q || !Q.surahs) {
+  /* شبكة أمان: لو ملف المصحف ما اتحمّلش، نعرض رسالة بدل شاشة واقفة */
+  const sp = document.getElementById('splash');
+  const b = document.getElementById('retryBtn');
+  const tx = document.getElementById('loadTxt');
+  if (tx) tx.textContent = 'تعذر تحميل نص المصحف. تأكد من الإنترنت ثم أعد المحاولة.';
+  if (b) { b.style.display = 'inline-block'; b.onclick = () => location.reload(); }
+  if (sp) sp.classList.remove('off');
+  return;
+}
 const SURAHS = Q.surahs, JUZ = Q.juz;
 const $ = (s, r) => (r || document).querySelector(s);
 const $$ = (s, r) => Array.from((r || document).querySelectorAll(s));
@@ -216,7 +226,7 @@ function viewHome() {
   h += `<div class="sec"><h2>${esc(t('surahs'))}</h2><a class="cnt" href="#/index">${esc(t('all_surahs'))}</a></div><div class="list">`;
   featured.forEach((n) => { h += surahRow(SURAHS[n - 1]); });
   h += `</div>`;
-  h += `<p class="foot-note">${esc(t('made'))}<br>${esc(t('version'))} 1.0</p>`;
+  h += `<p class="foot-note">${esc(t('made'))}<br>${esc(t('version'))} 1.1</p>`;
 
   $('#app').innerHTML = `<div class="view">${h}</div>`;
   bindHome();
@@ -495,7 +505,7 @@ function viewSettings() {
   h += `<div class="card"><h3>${I.info} ${esc(t('about'))}</h3>
     <p class="tiny">${esc(t('sources_text'))}</p>
     <div class="divider"></div>
-    <p class="tiny" style="text-align:center">${esc(t('made'))} · ${esc(t('version'))} 1.0</p>
+    <p class="tiny" style="text-align:center">${esc(t('made'))} · ${esc(t('version'))} 1.1</p>
   </div>`;
 
   $('#app').innerHTML = `<div class="view">${h}</div>`;
@@ -701,11 +711,12 @@ function playAyah(s, a) {
 }
 
 /* ---------------- التنزيل/الترجمة ---------------- */
-async function ensureTranslation() {
+async function ensureTranslation(ms) {
   if (!S.tr) return true;
   if (trCache[S.tr]) return true;
-  try { await loadTr(S.tr); return !!trCache[S.tr]; }
-  catch (e) { return false; }
+  const wait = loadTr(S.tr).then(() => !!trCache[S.tr]).catch(() => false);
+  const guard = new Promise((res) => setTimeout(() => res(false), ms || 7000));
+  return Promise.race([wait, guard]);
 }
 
 /* ---------------- الرسم العام ---------------- */
@@ -771,7 +782,7 @@ async function boot() {
 
   txt.textContent = t('loading_tr');
   fill.style.width = '60%';
-  await ensureTranslation();
+  await ensureTranslation(6000);
   fill.style.width = '85%';
 
   window.addEventListener('hashchange', () => render());
@@ -782,7 +793,17 @@ async function boot() {
   window.addEventListener('appinstalled', () => { S.installEvt = null; });
 
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js').catch(() => {});
+    navigator.serviceWorker.register('sw.js?v=1.1.0').then((reg) => {
+      reg.addEventListener('updatefound', () => {
+        const nw = reg.installing;
+        if (!nw) return;
+        nw.addEventListener('statechange', () => {
+          if (nw.state === 'installed' && navigator.serviceWorker.controller) {
+            setTimeout(() => toast('تحديث جديد جاهز — اقفل التطبيق وافتحه'), 1200);
+          }
+        });
+      });
+    }).catch(() => {});
   }
 
   render();

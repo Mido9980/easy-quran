@@ -4,15 +4,30 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#04120F">
+<meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="القرآن الكريم">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<title>القرآن الكريم — نور</title>
-<meta name="description" content="القرآن الكريم كاملاً بخط عثماني، مع ترجمة روسية وإنجليزية وأكثر، يعمل بدون إنترنت.">
+<meta name="application-name" content="القرآن الكريم">
+<title>القرآن الكريم</title>
+<meta name="description" content="القرآن الكريم كاملاً بخط عثماني، مع الترجمة تحت كل آية (روسي وإنجليزي وأكثر)، يعمل بدون إنترنت.">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="icons/i192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <style>@font-face{font-family:'AmiriQ';src:url('fonts/amiri.ttf') format('truetype');font-display:swap;font-weight:400 700}</style>
-<link rel="stylesheet" href="css/style.css?v=1.0.2">
+<link rel="stylesheet" href="css/style.css?v=1.1.0">
+<script>
+/* تنظيف الكاش عند الفتح بامتداد ?reset=1 (يحل مشكلة النسخ القديمة العالقة) */
+(function () {
+  if (!/[?&]reset=1/.test(location.search)) return;
+  try {
+    if ('serviceWorker' in navigator) navigator.serviceWorker.getRegistrations()
+      .then(function (rs) { rs.forEach(function (r) { r.unregister(); }); });
+    if (window.caches) caches.keys().then(function (ks) { ks.forEach(function (k) { caches.delete(k); }); });
+    history.replaceState(null, '', location.pathname);
+  } catch (e) {}
+})();
+</script>
 </head>
 <body data-theme="emerald">
 
@@ -20,9 +35,10 @@
   <div class="splash-in">
     <div class="splash-mark">﷽</div>
     <h1>القرآن الكريم</h1>
-    <p class="splash-sub">نور</p>
+    <p class="splash-sub" id="splashSub">يعمل بدون إنترنت</p>
     <div class="loadbar"><span id="loadFill"></span></div>
     <p class="splash-tiny" id="loadTxt">جارٍ التحضير…</p>
+    <button id="retryBtn" style="display:none;margin-top:14px;padding:10px 22px;border:0;border-radius:12px;font:inherit;font-weight:700;background:#d9b25f;color:#0b1a16;cursor:pointer">تحديث الآن</button>
   </div>
 </div>
 
@@ -30,7 +46,7 @@
   <button class="ibtn" id="backBtn" aria-label="back" hidden></button>
   <div class="bar-title">
     <b id="barTitle">القرآن الكريم</b>
-    <span id="barSub">نور</span>
+    <span id="barSub"></span>
   </div>
   <div class="bar-actions">
     <button class="ibtn" id="trBtn" aria-label="translation" hidden></button>
@@ -60,8 +76,33 @@
 
 <div class="toast" id="toast"></div>
 
-<script src="js/i18n.js?v=1.0.2"></script>
-<script src="data/quran.js?v=1.0.2"></script>
-<script src="js/app.js?v=1.0.2"></script>
+<script src="js/i18n.js?v=1.1.0"></script>
+<script src="data/quran.js?v=1.1.0"></script>
+<script src="js/app.js?v=1.1.0"></script>
+<script>
+/* شبكة أمان: لو التطبيق ما اشتغلش خلال ٩ ثواني نعرض زر تحديث بدل شاشة فاضية */
+setTimeout(function () {
+  var sp = document.getElementById('splash');
+  if (!sp || sp.classList.contains('off')) return;
+  var b = document.getElementById('retryBtn');
+  var tx = document.getElementById('loadTxt');
+  if (tx) tx.textContent = 'التحميل واخد وقت أطول من المعتاد.';
+  if (b) {
+    b.style.display = 'inline-block';
+    b.onclick = function () {
+      b.textContent = 'جارٍ التحديث…';
+      try {
+        if (window.caches) caches.keys().then(function (ks) {
+          return Promise.all(ks.map(function (k) { return caches.delete(k); }));
+        }).then(function () {
+          if ('serviceWorker' in navigator) navigator.serviceWorker.getRegistrations()
+            .then(function (rs) { rs.forEach(function (r) { r.unregister(); }); location.reload(); });
+          else location.reload();
+        });
+      } catch (e) { location.reload(); }
+    };
+  }
+}, 9000);
+</script>
 </body>
 </html>

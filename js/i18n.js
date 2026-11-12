@@ -1,7 +1,7 @@
 /* EASY QURAN — نصوص الواجهة. النص القرآني يبقى دائماً عثمانياً من اليمين. */
 window.I18N = {
   ar:{dir:'rtl',name:'العربية',flag:'🇪🇬',
-    app:'القرآن الكريم', tagline:'نور — يعمل بدون إنترنت',
+    app:'القرآن الكريم', tagline:'يعمل بدون إنترنت',
     home:'الرئيسية', mushaf:'المصحف', search:'بحث', saved:'محفوظات', settings:'إعدادات', about:'عن التطبيق',
     surahs:'السور', juz:'الأجزاء', meccan:'مكية', medinan:'مدنية', ayahs:'آية', ayah:'آية', surah:'سورة', juz_word:'الجزء',
     continue_reading:'متابعة القراءة', start_reading:'ابدأ من الفاتحة', last_at:'آخر موضع',
@@ -23,10 +23,10 @@ window.I18N = {
     translation_by:'الترجمة', loading_tr:'جارٍ تحميل الترجمة…', tr_fail:'تعذّر تحميل الترجمة، تحقق من الاتصال',
     quick:'وصول سريع', all_surahs:'كل السور', juz_list:'قائمة الأجزاء', progress:'التقدم',
     page:'صفحة', bismillah:'بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ', today:'اليوم',
-    share_text:'من تطبيق القرآن الكريم — نور', added_by:'ترجمة'
+    share_text:'من تطبيق القرآن الكريم', added_by:'ترجمة'
   },
   ru:{dir:'ltr',name:'Русский',flag:'🇷🇺',
-    app:'Священный Коран', tagline:'Нур — работает без интернета',
+    app:'Священный Коран', tagline:'работает без интернета',
     home:'Главная', mushaf:'Коран', search:'Поиск', saved:'Закладки', settings:'Настройки', about:'О приложении',
     surahs:'Суры', juz:'Джузы', meccan:'Мекканская', medinan:'Мединская', ayahs:'аятов', ayah:'аят', surah:'Сура', juz_word:'Джуз',
     continue_reading:'Продолжить чтение', start_reading:'Начать с «Аль-Фатиха»', last_at:'Последнее место',
@@ -48,10 +48,10 @@ window.I18N = {
     translation_by:'Перевод', loading_tr:'Загрузка перевода…', tr_fail:'Не удалось загрузить перевод',
     quick:'Быстрый доступ', all_surahs:'Все суры', juz_list:'Список джузов', progress:'Прогресс',
     page:'Страница', bismillah:'بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ', today:'Сегодня',
-    share_text:'Из приложения «Священный Коран — Нур»', added_by:'Перевод'
+    share_text:'Из приложения «Священный Коран»', added_by:'Перевод'
   },
   en:{dir:'ltr',name:'English',flag:'🇬🇧',
-    app:'The Holy Quran', tagline:'Noor — works offline',
+    app:'The Holy Quran', tagline:'works offline',
     home:'Home', mushaf:'Quran', search:'Search', saved:'Bookmarks', settings:'Settings', about:'About',
     surahs:'Surahs', juz:'Juz', meccan:'Meccan', medinan:'Medinan', ayahs:'verses', ayah:'verse', surah:'Surah', juz_word:'Juz',
     continue_reading:'Continue reading', start_reading:'Start from Al-Fatihah', last_at:'Last position',
@@ -73,10 +73,10 @@ window.I18N = {
     translation_by:'Translation', loading_tr:'Loading translation…', tr_fail:'Could not load the translation',
     quick:'Quick access', all_surahs:'All surahs', juz_list:'Juz list', progress:'Progress',
     page:'Page', bismillah:'بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ', today:'Today',
-    share_text:'From the Holy Quran app — Noor', added_by:'Translation'
+    share_text:'From the Holy Quran app', added_by:'Translation'
   },
   fr:{dir:'ltr',name:'Français',flag:'🇫🇷',
-    app:'Le Saint Coran', tagline:'Noor — fonctionne hors ligne',
+    app:'Le Saint Coran', tagline:'fonctionne hors ligne',
     home:'Accueil', mushaf:'Coran', search:'Recherche', saved:'Favoris', settings:'Réglages', about:'À propos',
     surahs:'Sourates', juz:'Juz', meccan:'Mecquoise', medinan:'Médinoise', ayahs:'versets', ayah:'verset', surah:'Sourate', juz_word:'Juz',
     continue_reading:'Continuer la lecture', start_reading:'Commencer par Al-Fatiha', last_at:'Dernière position',
@@ -98,10 +98,10 @@ window.I18N = {
     translation_by:'Traduction', loading_tr:'Chargement…', tr_fail:'Traduction indisponible',
     quick:'Accès rapide', all_surahs:'Toutes les sourates', juz_list:'Liste des juz', progress:'Progression',
     page:'Page', bismillah:'بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ', today:'Aujourd’hui',
-    share_text:'Depuis l’app Le Saint Coran — Noor', added_by:'Traduction'
+    share_text:'Depuis l’app Le Saint Coran', added_by:'Traduction'
   },
   de:{dir:'ltr',name:'Deutsch',flag:'🇩🇪',
-    app:'Der Heilige Koran', tagline:'Noor — funktioniert offline',
+    app:'Der Heilige Koran', tagline:'funktioniert offline',
     home:'Start', mushaf:'Koran', search:'Suche', saved:'Lesezeichen', settings:'Einstellungen', about:'Über die App',
     surahs:'Suren', juz:'Dschuz', meccan:'Mekkanisch', medinan:'Medinensisch', ayahs:'Verse', ayah:'Vers', surah:'Sure', juz_word:'Dschuz',
     continue_reading:'Weiterlesen', start_reading:'Mit Al-Fatiha beginnen', last_at:'Letzte Stelle',
@@ -123,10 +123,10 @@ window.I18N = {
     translation_by:'Übersetzung', loading_tr:'Wird geladen…', tr_fail:'Übersetzung nicht verfügbar',
     quick:'Schnellzugriff', all_surahs:'Alle Suren', juz_list:'Dschuz-Liste', progress:'Fortschritt',
     page:'Seite', bismillah:'بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ', today:'Heute',
-    share_text:'Aus der App Der Heilige Koran — Noor', added_by:'Übersetzung'
+    share_text:'Aus der App Der Heilige Koran', added_by:'Übersetzung'
   },
   es:{dir:'ltr',name:'Español',flag:'🇪🇸',
-    app:'El Sagrado Corán', tagline:'Noor — funciona sin internet',
+    app:'El Sagrado Corán', tagline:'funciona sin internet',
     home:'Inicio', mushaf:'Corán', search:'Buscar', saved:'Guardados', settings:'Ajustes', about:'Acerca de',
     surahs:'Suras', juz:'Yuz', meccan:'Mequí', medinan:'Medinense', ayahs:'aleyas', ayah:'aleya', surah:'Sura', juz_word:'Yuz',
     continue_reading:'Continuar lectura', start_reading:'Empezar por Al-Fatiha', last_at:'Última posición',
@@ -148,10 +148,10 @@ window.I18N = {
     translation_by:'Traducción', loading_tr:'Cargando…', tr_fail:'Traducción no disponible',
     quick:'Acceso rápido', all_surahs:'Todas las suras', juz_list:'Lista de yuz', progress:'Progreso',
     page:'Página', bismillah:'بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ', today:'Hoy',
-    share_text:'Desde la app El Sagrado Corán — Noor', added_by:'Traducción'
+    share_text:'Desde la app El Sagrado Corán', added_by:'Traducción'
   },
   tr:{dir:'ltr',name:'Türkçe',flag:'🇹🇷',
-    app:'Kur’an-ı Kerim', tagline:'Noor — çevrimdışı çalışır',
+    app:'Kur’an-ı Kerim', tagline:'çevrimdışı çalışır',
     home:'Ana sayfa', mushaf:'Kur’an', search:'Ara', saved:'Kayıtlı', settings:'Ayarlar', about:'Hakkında',
     surahs:'Sureler', juz:'Cüzler', meccan:'Mekkî', medinan:'Medenî', ayahs:'ayet', ayah:'ayet', surah:'Sure', juz_word:'Cüz',
     continue_reading:'Okumaya devam', start_reading:'Fâtiha’dan başla', last_at:'Son yer',
@@ -173,10 +173,10 @@ window.I18N = {
     translation_by:'Meal', loading_tr:'Yükleniyor…', tr_fail:'Meal yüklenemedi',
     quick:'Hızlı erişim', all_surahs:'Tüm sureler', juz_list:'Cüz listesi', progress:'İlerleme',
     page:'Sayfa', bismillah:'بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ', today:'Bugün',
-    share_text:'Kur’an-ı Kerim — Noor uygulamasından', added_by:'Meal'
+    share_text:'Kur’an-ı Kerim uygulamasından', added_by:'Meal'
   },
   id:{dir:'ltr',name:'Bahasa Indonesia',flag:'🇮🇩',
-    app:'Al-Qur’an Al-Karim', tagline:'Noor — berfungsi offline',
+    app:'Al-Qur’an Al-Karim', tagline:'berfungsi offline',
     home:'Beranda', mushaf:'Mushaf', search:'Cari', saved:'Tersimpan', settings:'Pengaturan', about:'Tentang',
     surahs:'Surah', juz:'Juz', meccan:'Makkiyah', medinan:'Madaniyah', ayahs:'ayat', ayah:'ayat', surah:'Surah', juz_word:'Juz',
     continue_reading:'Lanjutkan membaca', start_reading:'Mulai dari Al-Fatihah', last_at:'Terakhir dibaca',
@@ -198,10 +198,10 @@ window.I18N = {
     translation_by:'Terjemahan', loading_tr:'Memuat…', tr_fail:'Terjemahan gagal dimuat',
     quick:'Akses cepat', all_surahs:'Semua surah', juz_list:'Daftar juz', progress:'Progres',
     page:'Halaman', bismillah:'بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ', today:'Hari ini',
-    share_text:'Dari aplikasi Al-Qur’an — Noor', added_by:'Terjemahan'
+    share_text:'Dari aplikasi Al-Qur’an', added_by:'Terjemahan'
   },
   ur:{dir:'rtl',name:'اردو',flag:'🇵🇰',
-    app:'قرآن کریم', tagline:'نور — انٹرنیٹ کے بغیر',
+    app:'قرآن کریم', tagline:'انٹرنیٹ کے بغیر',
     home:'ہوم', mushaf:'مصحف', search:'تلاش', saved:'محفوظ', settings:'ترتیبات', about:'تعارف',
     surahs:'سورتیں', juz:'پارے', meccan:'مکی', medinan:'مدنی', ayahs:'آیات', ayah:'آیت', surah:'سورت', juz_word:'پارہ',
     continue_reading:'پڑھنا جاری رکھیں', start_reading:'الفاتحہ سے شروع کریں', last_at:'آخری مقام',
@@ -223,7 +223,7 @@ window.I18N = {
     translation_by:'ترجمہ', loading_tr:'لوڈ ہو رہا ہے…', tr_fail:'ترجمہ لوڈ نہیں ہوا',
     quick:'فوری رسائی', all_surahs:'تمام سورتیں', juz_list:'پاروں کی فہرست', progress:'پیش رفت',
     page:'صفحہ', bismillah:'بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ', today:'آج',
-    share_text:'قرآن کریم — نور ایپ سے', added_by:'ترجمہ'
+    share_text:'قرآن کریم ایپ سے', added_by:'ترجمہ'
   }
 };
 
